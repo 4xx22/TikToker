@@ -15,7 +15,7 @@ module.exports = class tiktokCommand extends SlashCommand {
       description: "Get the direct video of a tiktok.",
       defaultPermission: true,
       options: [{
-        required: false,
+        required: true,
         type: CommandOptionType.STRING,
         name: 'link',
         description: "Link to the tiktok.",
@@ -104,7 +104,7 @@ module.exports = class tiktokCommand extends SlashCommand {
           await ctx.send({
                 file: {
                     name: videoName,
-                    file: attachment
+                    file: fs.readFileSync(videoName)
                   }
             })
             fs.unlinkSync(videoName)
