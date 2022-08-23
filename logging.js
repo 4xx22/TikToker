@@ -1,6 +1,5 @@
 const moment = require('moment');
 const chalk = require('chalk');
-const {client} = require("./index.js");
 const timestamp = `[${moment().format('HH:mm:ss')}]:`;
 
 exports.log = (content, type = 'log') => {
@@ -24,25 +23,6 @@ exports.log = (content, type = 'log') => {
 	default: throw new TypeError("Le type de logger doit être l'un des suivants: log, warn, info, error, debug");
 }
 };
-
-exports.cmd = (guildID, user, command, data) =>  {
-	let guild = client.guilds.cache.get(guildID)
-	logs.log(`${chalk.bgCyan('[CMD]')} Using ${command} ${data} by ${user.username}#${user.discriminator} (${user.id}) in ${guild.name} (${guild.id})`, {
-		guild: {
-			id: guild.id,
-			name: guild.name
-		},
-		user: {
-			id: user.id,
-			name: `${user.username}#${user.discriminator}`
-		},
-		command: {
-			name: command,
-			options: data
-		}
-	});
-	console.log(`${timestamp} ${chalk.bgCyan('[CMD]')} Using ${command} ${data} by ${user.username}#${user.discriminator} (${user.id}) in ${guild.name} (${guild.id})`)
-}
 
 exports.debug = (...args) => this.log(...args, 'debug');
 

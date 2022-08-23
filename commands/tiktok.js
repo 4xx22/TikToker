@@ -1,8 +1,4 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
-const Discord = require('discord.js');
-const moment = require("moment");
-const chalk = require('chalk');
-var {client} = require("../index.js");
 const TikTokScraper = require('tiktok-scraper');
 const https = require('follow-redirects').https;
 const fs = require("fs")
@@ -113,18 +109,7 @@ module.exports = class tiktokCommand extends SlashCommand {
             ephemeral: true
           });    
     }
-
-
-
-
-        let time = moment(Date.now()).format("HH:mm:ss");
-            if (typeof (ctx.guildID) === 'undefined') {
-                console.log(`${chalk.cyan(`[CMD] Utilisation du /adddomain domain:${ctx.options.domain} par ${ctx.user.username}#${ctx.user.discriminator} (${ctx.user.id}) in DM ${time}`)}`);
-            } else {
-                let guild = client.guilds.cache.get(ctx.guildID)
-                console.log(`${chalk.cyan(`[CMD] Utilisation du /adddomain domain:${ctx.options.domain} par ${ctx.user.username}#${ctx.user.discriminator} (${ctx.user.id}) ${guild.name} (${guild.id}) ${time}`)}`);
-              }
-    }
+}
         catch (error) {
             console.log((error))
             return "Une erreur est survenu, merci de contacter Skye!";
