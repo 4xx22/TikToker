@@ -3,7 +3,6 @@ const path = require('path');
 const Discord = require('discord.js');
 const { GatewayIntentBits } = require('discord.js');
 const { SlashCreator, GatewayServer } = require('slash-create');
-const moment = require("moment");
 const mongo = require("mongoose");
 const TikTokScraper = require('tiktok-scraper');
 var { tall } = require('tall')
@@ -73,6 +72,9 @@ const client = new Discord.Client({
     let videoName = (videoMeta.collector[0].id + ".mp4")
     let attachment = new Discord.AttachmentBuilder(videoMeta.collector[0].videoUrl, { name: videoName });
     message.reply({files: [attachment]})
+    .catch(error => {
+      client.logger.error('Error on message.reply (urlOK): ' + error)
+    })
   }
 
 
