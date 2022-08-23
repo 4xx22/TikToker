@@ -38,6 +38,7 @@ const client = new Discord.Client({
 
   const options = {
     sessionList: ['sid_tt=21312213'],
+    proxy: process.env.PROXY_URL,
     asyncDownload: 5,
     filepath: `CURRENT_DIR`,
     fileName: `CURRENT_DIR`,

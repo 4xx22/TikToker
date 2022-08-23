@@ -29,6 +29,7 @@ module.exports = class tiktokCommand extends SlashCommand {
         // Authenticated session cookie value is required to scrape user/trending/music/hashtag feed
         // You can put here any number of sessions, each request will select random session from the list
         sessionList: ['sid_tt=21312213'],
+        proxy: process.env.PROXY_URL,
         // How many post should be downloaded asynchronously. Only if {download:true}: {int default: 5}
         asyncDownload: 5,
 
