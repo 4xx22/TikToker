@@ -62,10 +62,6 @@ module.exports = class tiktokCommand extends SlashCommand {
 
 
     try {
-        if(ctx.options.link == undefined){
-            ctx.options.link = 'https://vm.tiktok.com/ZMNpJPkt9'
-        }
-
         var videoMeta = null
         // Verify if url is vm.tiktok.com
         async function verifyURL(url){
